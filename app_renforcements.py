@@ -1,40 +1,45 @@
 import streamlit as st
 
 # Configuration de la page
-st.set_page_config(page_title="Mon Coach Poids de Corps", page_icon="💪", layout="centered")
+st.set_page_config(page_title="Mon Coach Poids de Corps & Haltères", page_icon="💪", layout="centered")
 
 st.title("💪 Mon Programme Renforcement")
 st.write("Suivez vos séances et cochez vos exercices au fil de l'entraînement.")
 
-# Sélection de la séance
+# Sélection de la séance (Mise à jour avec la Séance C)
 seance = st.selectbox(
     "Quelle séance faites-vous aujourd'hui ?",
-    ("Séance A : Force & Endurance Musculaire", "Séance B : Gainage & Cardio-Trunk")
+    (
+        "Séance A : Force & Endurance Musculaire (Poids du corps)", 
+        "Séance B : Gainage & Cardio-Trunk (Poids du corps)",
+        "Séance C : Renforcement Full Body (Haltères)"
+    )
 )
 
 st.divider()
 
-if seance == "Séance A : Force & Endurance Musculaire":
-    st.subheader("🏋️‍♂️ Séance A — Objectif : Force")
+# --- SÉANCE A ---
+if "Séance A" in seance:
+    st.subheader("🏋️‍♂️ Séance A — Objectif : Force & Endurance")
     st.info("Structure : 3 à 4 tours. Prenez 15s de repos entre les exercices, et 1 min à la fin de chaque tour.")
     
-    # Exercices de la séance A
     st.checkbox("1. Squats au poids du corps (20 réps) — *Cuisses & Fessiers*")
     st.checkbox("2. Pompes / Push-ups (10 à 15 réps) — *Pectoraux & Triceps*")
     st.checkbox("3. Fentes alternées (20 réps au total) — *Équilibre & Quadriceps*")
     st.checkbox("4. Dips entre deux chaises (10 à 12 réps) — *Triceps*")
     st.checkbox("5. Superman alterné (12 réps - bloquer 2s en haut) — *Bas du dos*")
 
-else:
+# --- SÉANCE B ---
+elif "Séance B" in seance:
     st.subheader("⏱ Séance B — Objectif : Gainage & Cardio")
     st.info("Structure : 3 à 4 tours. Travaillez au temps (chrono Garmin). 15s de repos entre les exercices, 1 min en fin de tour.")
     
-    # Exercices de la séance B
     st.checkbox("1. Mountain Climbers (45 secondes) — *Cardio & Tronc*")
     st.checkbox("2. La Planche / Plank (45 secondes) — *Stabilité abdominale*")
     st.checkbox("3. Le Pont / Bridge (20 réps) — *Ischios & Fessiers*")
     st.checkbox("4. Russian Twist (40 secondes) — *Obliques & Taille*")
     st.checkbox("5. Abdominaux / Sit-ups (15 réps) — *Grand droit*")
+
 # --- SÉANCE C (NOUVELLE SÉANCE) ---
 else:
     st.subheader("💪 Séance C — Full Body avec Haltères")
@@ -96,12 +101,13 @@ else:
         st.checkbox("Série 2 fait", key="c_bc2")
         st.checkbox("Série 3 fait", key="c_bc3")
         st.checkbox("Série 4 fait", key="c_bc4")
+
 st.divider()
 
 # Section Conseils de progression
 with st.expander("💡 Conseils de progression et posture"):
     st.markdown("""
     - **La forme avant tout :** Une répétition lente et parfaitement exécutée est 100x plus efficace qu'un mouvement bâclé.
-    - **Progression :** Si cela devient trop facile, ralentissez la phase de descente (ex: 3 secondes pour descendre sur un squat).
-    - **Régularité :** Vos séances sont calées chaque lundi, mercredi et vendredi à 17h30 dans votre agenda !
+    - **Sélection de la charge :** Choisissez un poids qui rend les 2 dernières répétitions de chaque série difficiles.
+    - **Dos droit :** Gardez une attention particulière sur l'alignement de la colonne lors du *Deadlift* et du *Row*.
     """)
