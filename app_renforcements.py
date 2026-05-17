@@ -35,7 +35,67 @@ else:
     st.checkbox("3. Le Pont / Bridge (20 réps) — *Ischios & Fessiers*")
     st.checkbox("4. Russian Twist (40 secondes) — *Obliques & Taille*")
     st.checkbox("5. Abdominaux / Sit-ups (15 réps) — *Grand droit*")
+# --- SÉANCE C (NOUVELLE SÉANCE) ---
+else:
+    st.subheader("💪 Séance C — Full Body avec Haltères")
+    st.info("Structure Classique : Faites les 4 séries d'un exercice avant de passer au suivant. Prenez 1 minute de repos entre chaque série.")
+    
+    # Exercices de la séance C (Option 1 de l'image)
+    with st.expander("1. Squats (4 séries x 12 réps)", expanded=True):
+        st.write("*Cible : Cuisses et Fessiers*")
+        st.checkbox("Série 1 fait", key="c_sq1")
+        st.checkbox("Série 2 fait", key="c_sq2")
+        st.checkbox("Série 3 fait", key="c_sq3")
+        st.checkbox("Série 4 fait", key="c_sq4")
+        
+    with st.expander("2. Lunges / Fentes (4 séries x 15 réps)", expanded=True):
+        st.write("*Cible : Cuisses et Équilibre*")
+        st.checkbox("Série 1 fait", key="c_lu1")
+        st.checkbox("Série 2 fait", key="c_lu2")
+        st.checkbox("Série 3 fait", key="c_lu3")
+        st.checkbox("Série 4 fait", key="c_lu4")
 
+    with st.expander("3. Deadlift / Soulevé de terre (4 séries x 8 réps)", expanded=True):
+        st.write("*Cible : Ischios-jambiers et Bas du dos (Charnière de hanche)*")
+        st.checkbox("Série 1 fait", key="c_dl1")
+        st.checkbox("Série 2 fait", key="c_dl2")
+        st.checkbox("Série 3 fait", key="c_dl3")
+        st.checkbox("Série 4 fait", key="c_dl4")
+
+    with st.expander("4. Row / Tirage buste penché (4 séries x 10 réps)", expanded=True):
+        st.write("*Cible : Muscle grand dorsal et milieu du dos*")
+        st.checkbox("Série 1 fait", key="c_rw1")
+        st.checkbox("Série 2 fait", key="c_rw2")
+        st.checkbox("Série 3 fait", key="c_rw3")
+        st.checkbox("Série 4 fait", key="c_rw4")
+
+    with st.expander("5. Shoulder Press / Développé épaules (4 séries x 10 réps)", expanded=True):
+        st.write("*Cible : Épaules (Deltoïdes)*")
+        st.checkbox("Série 1 fait", key="c_sp1")
+        st.checkbox("Série 2 fait", key="c_sp2")
+        st.checkbox("Série 3 fait", key="c_sp3")
+        st.checkbox("Série 4 fait", key="c_sp4")
+
+    with st.expander("6. Lateral Raises / Élévations latérales (4 séries x 12 réps)", expanded=True):
+        st.write("*Cible : Côtés des épaules (Largeur)*")
+        st.checkbox("Série 1 fait", key="c_lr1")
+        st.checkbox("Série 2 fait", key="c_lr2")
+        st.checkbox("Série 3 fait", key="c_lr3")
+        st.checkbox("Série 4 fait", key="c_lr4")
+
+    with st.expander("7. Skull Crusher / Barre au front haltères (4 séries x 10 réps)", expanded=True):
+        st.write("*Cible : Arrière des bras (Triceps)*")
+        st.checkbox("Série 1 fait", key="c_sc1")
+        st.checkbox("Série 2 fait", key="c_sc2")
+        st.checkbox("Série 3 fait", key="c_sc3")
+        st.checkbox("Série 4 fait", key="c_sc4")
+
+    with st.expander("8. Biceps Curl (4 séries x 12 réps)", expanded=True):
+        st.write("*Cible : Avant des bras (Biceps)*")
+        st.checkbox("Série 1 fait", key="c_bc1")
+        st.checkbox("Série 2 fait", key="c_bc2")
+        st.checkbox("Série 3 fait", key="c_bc3")
+        st.checkbox("Série 4 fait", key="c_bc4")
 st.divider()
 
 # Section Conseils de progression
