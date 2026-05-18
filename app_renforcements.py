@@ -4,7 +4,6 @@ import streamlit as st
 st.set_page_config(page_title="Coach Pixel 6 - Sport", page_icon="🔥", layout="centered")
 
 # --- STYLES CSS PERSONNALISÉS ---
-# Pour améliorer le rendu sur mobile, centrer les images et le texte
 st.markdown("""
 <style>
     /* Force les images à s'adapter et centre-les */
@@ -54,8 +53,6 @@ if "Séance A" in seance:
     
     st.markdown("---")
     
-    # --- LISTE STRUCTURÉE DES EXERCICES DE LA SÉANCE A ---
-    # Format : (Titre affiché, Description/Cible, Nom de fichier image)
     exercices_a = [
         ("1. Squats (20 réps)", "Cible : Cuisses & Fessiers — Descendez les fesses vers l'arrière, buste droit.", "Squat.jpg"),
         ("2. Pompes / Push-ups (10-15 réps)", "Cible : Pectoraux & Triceps — Corps aligné, descendez la poitrine près du sol.", "pompes.jpg"),
@@ -64,23 +61,15 @@ if "Séance A" in seance:
         ("5. Superman (12 réps)", "Cible : Bas du dos — Allongé sur le ventre, décollez poitrine et jambes simultanément.", "superman.jpg")
     ]
 
-    # --- AFFICHAGE DYNAMIQUE AVEC EXPANDEURS ---
     for titre, desc, img_nom in exercices_a:
-        # Premier exercice ouvert par défaut pour l'ergonomie
         est_ouvert = True if "1." in titre else False
-
         with st.expander(titre, expanded=est_ouvert):
-            # 1. Consigne/Description
             st.write(f"👉 *{desc}*")
-            
-            # 2. Affichage de l'image correspondante
             try:
-                # use_container_width=True est important pour le mobile
                 st.image(img_nom, use_container_width=True)
             except FileNotFoundError:
                 st.error(f"⚠️ Fichier image non trouvé : {img_nom}")
             
-            # 3. Séparateur et Cases à cocher pour les 3 séries
             st.write("---")
             col1, col2, col3 = st.columns(3)
             with col1: st.checkbox("S1", key=f"a_{img_nom}_1")
@@ -93,7 +82,6 @@ if "Séance A" in seance:
 elif "Séance B" in seance:
     st.subheader("⏱ Séance B — Gainage & Cardio")
     st.info("Travail au temps (Garmin). 15s de repos entre exercices.")
-    # Boucle simple pour gainage (conservée du script original)
     for ex in ["1. Mountain Climbers (45s)", "2. Planche (45s)", "3. Le Pont (20r)", "4. Russian Twist (40s)", "5. Sit-ups (15r)"]:
         st.checkbox(ex, key=f"b_{ex}")
 
@@ -104,29 +92,45 @@ elif "Séance C" in seance:
     st.subheader("💪 Séance C — Haltères Full Body")
     st.info("4 séries par exercice. 1 min de repos entre les séries.")
     
-    # Liste conservée du script original
-    exos_c = [
-        "1. Squats (12r)", "2. Fentes (15r)", "3. Deadlift (8r)", "4. Row (10r)", 
-        "5. Shoulder Press (10r)", "6. Lateral Raises (12r)", "7. Skull Crusher (10r)", "8. Biceps Curl (12r)"
+    st.markdown("---")
+
+    # Liste structurée : (Titre, Description, Nom de fichier)
+    exercices_c = [
+        ("1. Squats (12 réps)", "Cible : Cuisses & Fessiers — Haltères sur les épaules ou le long du corps.", "Squat.jpg"),
+        ("2. Fentes (15 réps)", "Cible : Quadriceps & Ischios — Un haltère dans chaque main, alternez les pas.", "fentes.jpg"),
+        ("3. Deadlift (8 réps)", "Cible : Chaîne postérieure — Gardez le dos parfaitement droit, basculez les hanches.", "Deadlift.gif"),
+        ("4. Row (10 réps)", "Cible : Dos — Buste penché en avant, ramenez les coudes vers le haut.", "Row.jpg"),
+        ("5. Shoulder Press (10 réps)", "Cible : Épaules — Développé vertical au-dessus de la tête, assis ou debout.", "Shoulder Press.jpg"),
+        ("6. Lateral Raises (12 réps)", "Cible : Épaules (faisceau moyen) — Élevez les bras sur les côtés jusqu'à l'horizontale.", "Lateral Raises.jpg"),
+        ("7. Skull Crusher (10 réps)", "Cible : Triceps — Allongé, fléchissez les coudes pour amener les haltères vers les tempes.", "Skullcrusher.jpg"),
+        ("8. Biceps Curl (12 réps)", "Cible : Biceps — Flexion des bras sans élan, coudes verrouillés au corps.", "Biceps curl.jpg")
     ]
     
     # Affichage avec expandeurs et cases à cocher pour 4 séries
-    for exo in exos_c:
-        with st.expander(exo):
+    for titre, desc, img_nom in exercices_c:
+        est_ouvert = True if "1." in titre else False
+        
+        with st.expander(titre, expanded=est_ouvert):
+            st.write(f"👉 *{desc}*")
+            try:
+                st.image(img_nom, use_container_width=True)
+            except FileNotFoundError:
+                st.error(f"⚠️ Image non trouvée : {img_nom}")
+                
+            st.write("---")
             col1, col2, col3, col4 = st.columns(4)
-            with col1: st.checkbox("S1", key=f"c_{exo}_1")
-            with col2: st.checkbox("S2", key=f"c_{exo}_2")
-            with col3: st.checkbox("S3", key=f"c_{exo}_3")
-            with col4: st.checkbox("S4", key=f"c_{exo}_4")
+            with col1: st.checkbox("S1", key=f"c_{img_nom}_1")
+            with col2: st.checkbox("S2", key=f"c_{img_nom}_2")
+            with col3: st.checkbox("S3", key=f"c_{img_nom}_3")
+            with col4: st.checkbox("S4", key=f"c_{img_nom}_4")
 
 # ==========================================
-# --- SÉANCE D : focus abdominaUX ----------
+# --- SÉANCE D : FOCUS ABDOMINAUX ----------
 # ==========================================
-else: # Correspond à "Séance D" dans le selectbox
+else:
     st.subheader("🎯 Séance D — Focus Abdominaux")
     st.info("Objectif : 3 tours. 20-60s de repos entre les séries.")
 
-    # Liste structurée (conservée du script original pour la Séance D)
     exercices_abs = [
         ("1. Crunches (15-20 réps)", "Cible : Haut des abdos", "1_crunches_fr.jpg"),
         ("2. Leg Raises (12-15 réps)", "Cible : Bas des abdos : Allongez-vous, levez les jambes et descendez-les avec contrôle.", "2_leg-raises.jpg"),
@@ -137,22 +141,15 @@ else: # Correspond à "Séance D" dans le selectbox
         ("7. Mountain Climbers (30-45 sec)", "Cible : Cardio & Core : Ramenez les genoux rapidement vers la poitrine.", "7_mountain_climbers.jpg")
     ]
 
-    # --- AFFICHAGE DYNAMIQUE AVEC EXPANDEURS (Séance D) ---
     for titre, desc, img_nom in exercices_abs:
-        # Premier exercice ouvert par défaut
         est_ouvert = True if "1." in titre else False
-
         with st.expander(titre, expanded=est_ouvert):
-            # 1. Consigne
             st.write(f"👉 *{desc}*")
-
-            # 2. Affichage de l'image correspondante
             try:
                 st.image(img_nom, use_container_width=True)
             except FileNotFoundError:
                 st.error(f"⚠️ Image non trouvée : {img_nom}")
 
-            # 3. Séparateur et Cases à cocher pour les 3 séries
             st.write("---")
             col1, col2, col3 = st.columns(3)
             with col1: st.checkbox("S1", key=f"d_{img_nom}_1")
@@ -163,13 +160,10 @@ else: # Correspond à "Séance D" dans le selectbox
 st.divider()
 st.markdown("### 🏁 Tour Terminé ?")
 if st.button("Valider la fin du tour", key="fin_tour"):
-    # Effet visuel
     st.balloons()
-    # Affichage du message de repos
     st.success("Super boulot ! Prenez 1 min de repos complet avant de relancer le tour suivant !")
-    # Optionnel : petit séparateur
     st.write("---")
 
 # --- PIED DE PAGE (FOOTER) ---
 st.write("---")
-st.markdown("<p style='text-align: center; color: grey;'>v1.2 | Gardez la posture avant la répétition !</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: grey;'>v1.3 | Gardez la posture avant la répétition !</p>", unsafe_allow_html=True)
