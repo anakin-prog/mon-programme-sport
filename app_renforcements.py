@@ -14,13 +14,13 @@ st.markdown("""
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     /* Centre les titres de séances */
     .stSubheader {
         text-align: center;
         color: #e03131; /* Rouge énergique */
     }
-    
+
     /* Centre les infos de repos */
     .stAlert {
         text-align: center;
@@ -37,7 +37,7 @@ seance = st.selectbox(
     (
         "Séance A : Force (Poids du corps)",
         "Séance B : Gainage & Cardio (Poids du corps)",
-        "Séance C : Full Body (Haltères)",
+        "Séance C : Haut du corps (Haltères)",
         "Séance D : Focus Abdominaux"
     )
 )
@@ -50,9 +50,9 @@ st.divider()
 if "Séance A" in seance:
     st.subheader("🏋️‍♂️ Séance A — Force & Endurance")
     st.info("Structure : 3 à 4 tours. Prenez 15s de repos entre exercices et 1 min à la fin de chaque tour.")
-    
+
     st.markdown("---")
-    
+
     exercices_a = [
         ("1. Squats (20 réps)", "Cible : Cuisses & Fessiers — Descendez les fesses vers l'arrière, buste droit.", "Squat.jpg"),
         ("2. Pompes / Push-ups (10-15 réps)", "Cible : Pectoraux & Triceps — Corps aligné, descendez la poitrine près du sol.", "pompes.jpg"),
@@ -69,7 +69,7 @@ if "Séance A" in seance:
                 st.image(img_nom, use_container_width=True)
             except FileNotFoundError:
                 st.error(f"⚠️ Fichier image non trouvé : {img_nom}")
-            
+
             st.write("---")
             col1, col2, col3 = st.columns(3)
             with col1: st.checkbox("S1", key=f"a_{img_nom}_1")
@@ -86,12 +86,12 @@ elif "Séance B" in seance:
         st.checkbox(ex, key=f"b_{ex}")
 
 # ==========================================
-# --- SÉANCE C : HALTÈRES FULL BODY ------
+# --- SÉANCE C : Haut du corps  ------
 # ==========================================
 elif "Séance C" in seance:
-    st.subheader("💪 Séance C — Haltères Full Body")
+    st.subheader("💪 Séance C — Haut du corps ")
     st.info("4 séries par exercice. 1 min de repos entre les séries.")
-    
+
     st.markdown("---")
 
     # Liste structurée : (Titre, Description, Nom de fichier)
@@ -105,18 +105,18 @@ elif "Séance C" in seance:
         ("7. Skull Crusher (10 réps)", "Cible : Triceps — Allongé, fléchissez les coudes pour amener les haltères vers les tempes.", "Skullcrusher.jpg"),
         ("8. Biceps Curl (12 réps)", "Cible : Biceps — Flexion des bras sans élan, coudes verrouillés au corps.", "Biceps curl.jpg")
     ]
-    
+
     # Affichage avec expandeurs et cases à cocher pour 4 séries
     for titre, desc, img_nom in exercices_c:
         est_ouvert = True if "1." in titre else False
-        
+
         with st.expander(titre, expanded=est_ouvert):
             st.write(f"👉 *{desc}*")
             try:
                 st.image(img_nom, use_container_width=True)
             except FileNotFoundError:
                 st.error(f"⚠️ Image non trouvée : {img_nom}")
-                
+
             st.write("---")
             col1, col2, col3, col4 = st.columns(4)
             with col1: st.checkbox("S1", key=f"c_{img_nom}_1")
