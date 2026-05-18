@@ -86,10 +86,10 @@ elif "Séance B" in seance:
         st.checkbox(ex, key=f"b_{ex}")
 
 # ==========================================
-# --- SÉANCE C : HALTÈRES FULL BODY ------
+# --- SÉANCE C : Haut du corps ------
 # ==========================================
 elif "Séance C" in seance:
-    st.subheader("💪 Séance C — Haltères Full Body")
+    st.subheader("💪 Séance C — Haut du corps")
     st.info("4 séries par exercice. 1 min de repos entre les séries.")
 
     st.markdown("---")
