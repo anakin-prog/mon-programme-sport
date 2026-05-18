@@ -37,7 +37,7 @@ seance = st.selectbox(
     (
         "Séance A : Force (Poids du corps)",
         "Séance B : Gainage & Cardio (Poids du corps)",
-        "Séance C : Full Body (Haltères)",
+        "Séance C : Haut du corps (Haltères)",
         "Séance D : Focus Abdominaux"
     )
 )
