@@ -96,7 +96,7 @@ elif "Séance C" in seance:
 
     # Liste structurée : (Titre, Description, Nom de fichier)
     exercices_c = [
-        ("1. Squats (12 réps)", "Cible : Cuisses & Fessiers — Haltères sur les épaules ou le long du corps.", "Squat.jpg"),
+        ("1. Développé couché (12 réps)", "Cible : Développer les muscles pectoraux. — Soulever les haltères et redescendre lentement.", "pectoraux.jpg"),
         ("2. Pompes / Push-ups (10-15 réps)", "Cible : Pectoraux & Triceps — Corps aligné, descendez la poitrine près du sol.", "pompes.jpg"),
         ("3. Deadlift (8 réps)", "Cible : Chaîne postérieure — Gardez le dos parfaitement droit, basculez les hanches.", "Deadlift.gif"),
         ("4. Row (10 réps)", "Cible : Dos — Buste penché en avant, ramenez les coudes vers le haut.", "Row.jpg"),
