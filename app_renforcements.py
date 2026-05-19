@@ -35,30 +35,29 @@ st.write("Suivez votre séance et validez vos séries.")
 seance = st.selectbox(
     "Quelle séance faites-vous aujourd'hui ?",
     (
-        "Séance A : Force (Poids du corps)",
-        "Séance B : Gainage & Cardio (Poids du corps)",
-        "Séance C : Haut du corps (Haltères)",
-        "Séance D : Focus Abdominaux"
+        "Séance A : Bas du corps (Poids du corps ou haltères)",
+        "Séance B : Haut du corps (Haltères)",
+        "Séance C : Focus Abdominaux"
     )
 )
 
 st.divider()
 
 # ==========================================
-# --- SÉANCE A : FORCE POIDS DE CORPS ------
+# --- SÉANCE A : Bas du corps  ------
 # ==========================================
 if "Séance A" in seance:
-    st.subheader("🏋️‍♂️ Séance A — Force & Endurance")
-    st.info("Structure : 3 à 4 tours. Prenez 15s de repos entre exercices et 1 min à la fin de chaque tour.")
+    st.subheader("🏋️‍♂️ Séance A — Bas du corps (Poids du corps ou haltères)")
+    st.info("Structure : 3 à 4 tours. Prenez 30s de repos entre exercices et 1 min à la fin de chaque tour.")
 
     st.markdown("---")
 
     exercices_a = [
         ("1. Squats (20 réps)", "Cible : Cuisses & Fessiers — Descendez les fesses vers l'arrière, buste droit.", "Squat.jpg"),
-        ("2. Pompes / Push-ups (10-15 réps)", "Cible : Pectoraux & Triceps — Corps aligné, descendez la poitrine près du sol.", "pompes.jpg"),
+        ("2. Squat sumo (10-15 réps)", "Cible : Les quadriceps et les ischio-jambiers— descendez et montez lentement.", "squat_sumo_haltere.gif"),
         ("3. Fentes alternées (20 réps au total)", "Cible : Quadriceps & Équilibre — Un grand pas avant, genou arrière frôle le sol.", "fentes.jpg"),
-        ("4. Dips (10-12 réps)", "Cible : Triceps — En appui sur le bord d'une chaise, fléchissez les coudes.", "Dips.jpg"),
-        ("5. Superman (12 réps)", "Cible : Bas du dos — Allongé sur le ventre, décollez poitrine et jambes simultanément.", "superman.jpg")
+        ("4. Soulevé de Terre Jambes Tendues (10-12 réps)", "Cible : Ischio-jambiers et fessiers — Descendez la barre en poussant les fesses vers l’arrière, genoux légèrement fléchis ", "Souleve_Terre.jpg"),
+
     ]
 
     for titre, desc, img_nom in exercices_a:
@@ -76,20 +75,12 @@ if "Séance A" in seance:
             with col2: st.checkbox("S2", key=f"a_{img_nom}_2")
             with col3: st.checkbox("S3", key=f"a_{img_nom}_3")
 
-# ==========================================
-# --- SÉANCE B : GAINAGE & CARDIO ---------
-# ==========================================
-elif "Séance B" in seance:
-    st.subheader("⏱ Séance B — Gainage & Cardio")
-    st.info("Travail au temps (Garmin). 15s de repos entre exercices.")
-    for ex in ["1. Mountain Climbers (45s)", "2. Planche (45s)", "3. Le Pont (20r)", "4. Russian Twist (40s)", "5. Sit-ups (15r)"]:
-        st.checkbox(ex, key=f"b_{ex}")
 
 # ==========================================
-# --- SÉANCE C : Haut du corps ------
+# --- SÉANCE B : Haut du corps ------
 # ==========================================
-elif "Séance C" in seance:
-    st.subheader("💪 Séance C — Haut du corps")
+elif "Séance B" in seance:
+    st.subheader("💪 Séance B — Haut du corps")
     st.info("4 séries par exercice. 1 min de repos entre les séries.")
 
     st.markdown("---")
@@ -125,10 +116,10 @@ elif "Séance C" in seance:
             with col4: st.checkbox("S4", key=f"c_{img_nom}_4")
 
 # ==========================================
-# --- SÉANCE D : FOCUS ABDOMINAUX ----------
+# --- SÉANCE C : FOCUS ABDOMINAUX ----------
 # ==========================================
 else:
-    st.subheader("🎯 Séance D — Focus Abdominaux")
+    st.subheader("🎯 Séance C — Focus Abdominaux")
     st.info("Objectif : 3 tours. 20-60s de repos entre les séries.")
 
     exercices_abs = [
